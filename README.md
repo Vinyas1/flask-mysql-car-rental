@@ -50,7 +50,7 @@ https://res.cloudinary.com/dokuv73yo/image/upload/v1773335605/Screenshot_2026-03
 
 ### 1️⃣ Clone the repository
 
-```bash
+```
 git clone https://github.com/Vinyas1/flask-mysql-car-rental.git
 cd car-rental-flask
 ```
@@ -59,17 +59,17 @@ cd car-rental-flask
 
 ### 2️⃣ Create Virtual Environment
 
-```bash
+```
 python -m venv venv
 ```
-```bash
+```
 venv\Scripts\activate
 ```
 ---
 
 ### 3️⃣ Install Dependencies
 
-```bash
+```
 pip install flask mysql-connector-python
 ```
 
