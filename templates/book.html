@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Booking</title>
+    <link rel="stylesheet" href="/static/styleb.css">
+    <style>
+        img { border-radius: 10px; }
+        .image-links a {
+            margin-right: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Car Booking System</h2>
+<button onclick="toggleForm()">Book a Car</button>
+
+<div id="bookingForm" style="display: none;">
+    <form action="/submit_booking" method="POST" onsubmit="openBookfTab()">
+        <label for="carid">Car ID:</label><br>
+        <input type="text" id="carid" name="carid" required oninput="updateCarName()"><br><br>
+
+        <label for="carname">Car Model:</label><br>
+        <input type="text" id="carname" name="carname" readonly><br><br>
+
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="booking_date">Booking Date:</label><br>
+        <input type="date" id="booking_date" name="booking_date" required><br><br>
+
+        <label for="return_date">Return Date:</label><br>
+        <input type="date" id="return_date" name="return_date" required><br><br>
+
+        <label for="amount">Amount:</label><br>
+        <input type="text" id="amount" name="amount" required readonly><br><br>
+
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <input type="hidden" name="_subject" value="New Car Booking Request">
+
+        <label for="text">INFO about car:</label><br>
+        <input type="text" id="text" name="text" readonly><br><br>
+
+        <div id="carDetails" style="display: none;">
+            <img id="carImage" src="" alt="Car Image" width="300"><br><br>
+        </div>
+
+        <input type="submit" value="Submit Booking">
+    </form>
+</div>
+
+<script>
+    function toggleForm() {
+        const form = document.getElementById("bookingForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+
+    function updateCarName() {
+        const carId = document.getElementById('carid').value;
+        const carNameInput = document.getElementById('carname');
+        const carImage = document.getElementById('carImage');
+        const amount = document.getElementById('amount');
+        const carDetails = document.getElementById('carDetails');
+        const infoInput = document.getElementById('text');
+
+        const carMap = {
+            '1': { name: 'Toyota RAV4', image: '/static/Toyota.jpg', price: '10000', info: 'https://www.toyota.com/rav4/' },
+            '2': { name: 'BMW 3 Series', image: '/static/bmw.jpg', price: '50000', info: 'https://www.bmw.in/en/all-models/3-series.html' },
+            '3': { name: 'Volkswagen T-Cross', image: '/static/vox.jpg', price: '33800', info: 'https://www.volkswagen.co.uk/en/models/t-cross.html' },
+            '4': { name: 'Cadillac Escalade', image: '/static/cad.jpg', price: '60000', info: 'https://www.cadillac.com/suvs/escalade' },
+            '5': { name: 'BMW 4 Series GTI', image: '/static/bmwconv.jpg', price: '50500', info: 'https://www.bmwusa.com/vehicles/4-series/overview.html' },
+            '6': { name: 'BMW 4 Series', image: '/static/bmw4.jpeg', price: '55200', info: 'https://www.bmw.com/en-au/models/4-series.html' }
+        };
+
+        const car = carMap[carId];
+        if (car) {
+            carNameInput.value = car.name;
+            carImage.src = car.image;
+            amount.value = car.price;
+            infoInput.value = car.info;
+            carDetails.style.display = 'block';
+        } else {
+            carNameInput.value = '';
+            carImage.src = '';
+            amount.value = '';
+            infoInput.value = '';
+            carDetails.style.display = 'none';
+        }
+    }
+
+    function openBookfTab() {
+        const formData = {
+            carid: document.getElementById('carid').value,
+            carname: document.getElementById('carname').value,
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value,
+            booking_date: document.getElementById('booking_date').value,
+            return_date: document.getElementById('return_date').value,
+            amount: document.getElementById('amount').value,
+            email: document.getElementById('email').value,
+            text: document.getElementById('text').value
+        };
+
+        localStorage.setItem('bookingFormData', JSON.stringify(formData));
+        
+    }
+</script>
+
+</body>
+</html>

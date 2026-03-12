@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Revv Car Rentals</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+  
+</head>
+<body>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flashes">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+  <header>
+    <h2 class="iglo"><strong> &&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A1A Car Rentals</strong></h2>
+    <div class="logo"></div>
+    
+    <img src="/static/logo.jpeg" width="50px" height="50px" class="im1">
+    
+    <nav>
+      <a href="#">Car Rental</a>
+      <a href="#">Car Subscription</a>
+      <a href="#">FAQs</a>  
+      <a href="#">HelpDesk</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="left-box">
+        
+        <div class="tab">
+          <button class="active">Rental<br><small>For hours & days</small></button>
+          <button>Subscriptions<br><small>For more than 7 days</small></button>
+        </div>
+        <div class="rental-box">
+          <h2 >RENT A CAR TODAY</h2>
+          <p></p>
+          <form method="POST">
+          <H1><p><strong><CENTER>LOG - IN</CENTER></strong></p></H1>
+          <div class="input-box">
+            <span class="location-icon">📍</span>
+            <label>USEREMAIL</label>&nbsp;
+            <input type="email"  name="email" required>
+            </div>
+            <div class="input-box">
+              <span class="location-icon">📍</span>
+            <label>PASSWORD</label>&nbsp;
+
+            <input type="password" name="password" required >
+          </div>
+          <button type="submit" class="no">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+        
+        </div>
+      </div>
+     
+     
+      <div class="right-box">
+        <h2>Subscribe a car @ <span class="price">₹1750</span>/day</h2>
+        <ul class="nig">
+          <li>Only ₹5,000 refundable deposit</li>
+          <li>No loan liability, Zero downpayment</li>
+          <li>Insurance & maintenance included</li>
+        </ul>
+        <br>
+         <button class="view-btn">←  Log in to view cars </button>
+        
+      </div>
+    </section>
+  </main>
+</body>
+</html>

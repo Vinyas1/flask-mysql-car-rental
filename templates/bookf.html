@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formspree Booking Submission</title>
+    <link rel="stylesheet" href="/static/styleb.css">
+</head>
+<body>
+    <h2>Booking Confirmation — Send to Email</h2>
+    
+    <form action="https://formspree.io/f/xovdaljd" method="POST">
+        
+        <input type="hidden" name="_subject" value="New Car Booking">
+
+        <label>Car ID:</label>
+        <input type="text" name="carid" id="carid" style="width: 300px;" readonly><br><br>
+
+        <label>Car Model:</label>
+        <input type="text" name="carname" id="carname" style="width: 300px;" readonly><br><br>
+
+        <label>Name:</label>
+        <input type="text" name="name" id="name" style="width: 300px;" readonly><br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" id="age" style="width: 300px;" readonly><br><br>
+
+        <label>Booking Date:</label>
+        <input type="text" name="booking_date" id="booking_date" style="width: 300px;" readonly><br><br>
+
+        <label>Return Date:</label>
+        <input type="text" name="return_date" id="return_date" style="width: 300px;" readonly><br><br>
+
+        <label>Amount:</label>
+        <input type="text" name="amount" id="amount" style="width: 300px;" readonly><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" id="email" style="width: 300px;" readonly><br><br>
+
+        <label>Info URL:</label>
+        <input type="text" name="text" id="text" style="width: 300px;" readonly><br><br>
+
+        <input type="submit" value="Send to Formspree" >
+   
+</form>
+   
+    <script>
+        const data = JSON.parse(localStorage.getItem('bookingFormData'));
+        if (data) {
+            Object.keys(data).forEach(key => {
+                const field = document.getElementById(key);
+                if (field) field.value = data[key];
+            });
+        }
+    </script>
+</body>
+</html>

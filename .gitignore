@@ -1,0 +1,45 @@
+# Python cache
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+
+venv/
+env/
+ENV/
+.venv/
+
+# Flask instance folder
+
+instance/
+
+# Logs
+
+*.log
+
+# Database files
+
+*.db
+*.sqlite3
+
+# PyCharm settings
+
+.idea/
+
+# Windows system files
+
+Thumbs.db
+
+# Temporary files
+
+*.tmp
+*.swp
+
+build/
+dist/
+*.egg-info/
+
+ 
+
